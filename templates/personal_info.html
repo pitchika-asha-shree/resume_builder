@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block head_title %}Personal Details{% endblock head_title %}
+{% load crispy_forms_tags%}
+{% load static %}
+{% block content %}
+<form style="padding-top: 20px;padding-bottom: 20px;padding-left: 19px;padding-right: 19px;" method="POST" enctype="multipart/form-data">
+    <section class="py-4 py-xl-5">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-8 col-lg-8 col-xl-8 col-xxl-8">
+                    <div class="card mb-5">
+                        <div class="card-body p-sm-5 row d-flex justify-content-center">
+                            <div class="col-md-3">
+                            <img src="{%static 'assets/img/contact-info.png'%}" >
+                            </div>
+                            <h2 class="text-center mb-4">Please write your Personal Details here</h2>
+                                {% csrf_token %}
+                                {{form.media}}
+                                {{form|crispy}}
+                                <div class="text-center">
+                                    <button class="btn btn-primary mt-3" type="submit">Save and Continue</button>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</form>
+{%endblock%}
